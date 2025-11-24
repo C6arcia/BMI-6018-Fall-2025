@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[35]:
-
-
 #VISUALIZATION WITH PYTHON
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -22,8 +16,6 @@ covid_data = pd.read_csv(url)
 #As per usual, any helper variables or columns you create should be thoughtfully named.
 
 
-# In[34]:
-
 
 '''VIS_1
 Create a visualization that shows all of the counties in Utah as a time series,
@@ -34,7 +26,7 @@ similar to the one shown in slide 22 during the lecture. The graphic should
 -Have well formatted dates as the X axis
 '''
 #isolate Utah data 
-utah = covid_data[covid_data["Province_State"] == "Utah"]
+utah_data = covid_data[covid_data["Province_State"] == "Utah"]
 
 #drop unnecessary columns to keep only the time series
 time_series = utah_data.drop(columns=['UID', 'iso2', 'iso3', 'code3', 'FIPS',
@@ -66,8 +58,6 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-
-# In[23]:
 
 
 '''VIZ_2
@@ -115,14 +105,6 @@ plt.tight_layout()
 plt.show()
 
 
-# In[ ]:
-
-
-
-
-
-# In[47]:
-
 
 '''VIZ_3
 Create a visualization that shows BOTH the running total of cases for a single
@@ -134,7 +116,7 @@ county AND the daily new cases. The graphic should:
 '''
 
 #choose a county
-county_data = covid_data[(covid_data['Province_State'] == 'Utah') & (data['Admin2'] == 'Utah')]
+county_data = covid_data[(covid_data['Province_State'] == 'Utah') & (covid_data['Admin2'] == 'Utah')]
 
 #keep only the date columns
 time_series = county_data.drop(columns=['UID', 'iso2', 'iso3', 'code3', 'FIPS',
@@ -173,8 +155,6 @@ fig.tight_layout()
 plt.show()
 
 
-# In[46]:
-
 
 '''VIZ_4
 Create a visualization that shows a stacked bar chart of county contributions
@@ -210,10 +190,3 @@ ax.set_title(f"County Contributions to {state_name}'s Total COVID-19 Cases")
 ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 plt.show()
-
-
-# In[ ]:
-
-
-
-
